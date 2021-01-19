@@ -1,0 +1,20 @@
+BISMILAHI RAHMANI RAHIM
+ALAHOUMA SOLI ALA MOUHAMADI-N WA ALA ALI MOUHAMADI-N WA SALIM
+
+Maria's copypaste weekly marathon task
+
+-She goes to the intranet at https://robotsparebinindustries.com/,
+-Logs in
+-Adding the data for the week for each sales representative
+    - Firstname,
+    - Lastname,
+    - The value of sales for the week,
+    - weekly target
+NB: This can take quite a while, and she admits that sometimes she has made mistakes. 😳
+
+After entered all the data :
+-she takes a screenshot of the page
+-adds it to the weekly newsletter
+-sends out this newsletter to everyone
+
+Our aim now is to automate this steps
