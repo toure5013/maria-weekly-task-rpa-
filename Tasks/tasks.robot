@@ -1,22 +1,51 @@
 *** Settings ***
-Documentation    BISMILLAH ROBOT FRAMEWORK
-Library  RPA.Browser
+Documentation  Acomplish maria weekly task that consist to download a file and fill a web page
+Library         RPA.Browser
+Library         RPA.Excel.Files
+Library         RPA.HTTP
+
+*** Variables ***
+${robotsparebin_web_url}=  https://robotsparebinindustries.com/
+${username}=  maria
+${password}=  thoushallnotpass
+
+${exel_file_url}=  ${EMPTY}
 
 
 *** Keywords ***
-BISMILLAH KEYWORDS
-    [Documentation]  Open Google in a browser |  make a screeshot | type BISMILLAH | and make a screeshot
-    [Arguments]  ${word_to_search}=${EMPTY}
-    Open Available Browser  http://google.com
-    screenshot
-    input text when element is visible   css:input.gLFyf  ${word_to_search}
-    sleep  1 second
-    click element when visible  css:input.gNO89b
-    screenshot
+Open Robotsparebin intranet
+    open available browser  ${robotsparebin_web_url}
+    does page contain  The leader in refurbished and dubious quality spare parts for robots, since 1982!
 
+
+
+*** Keywords ***
+Login to Robotsparebin web page
+    input text when element is visible  css:input#username  ${username}
+    sleep  1 second
+    input text when element is visible  css:input#password  ${password}
+    sleep  1 second
+    click button when visible  //*[@id="root"]/div/div/div/div[1]/form/button
+
+
+
+*** Keywords ***
+Dowload and open excel file
+    Dowload and open excel file  ${exel_file_url}
+
+
+*** Keywords ***
+Convert to pdf file
+
+*** Keywords ***
+Send report
 
 *** Tasks ***
-BISMILLAH TASK
-    [Documentation]    My main function using to call others functions called keywords
-    BISMILLAH KEYWORDS  BISMILLAH
-    [Teardown]    Close All Browsers
+Dowload excel file of sales report and fill the web page
+    [tags]  accomplish maria task
+    Open Robotsparebin intranet
+    Login to Robotsparebin web page
+    Dowload and open excel file
+    Fill the web page
+    Convert to pdf file
+    Send report
