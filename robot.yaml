@@ -1,0 +1,43 @@
+name: RPA Challenge robot
+description: Robot to execute RPA challenges at http://www.rpachallenge.com
+version: 0.0.1
+# You can define multiple tasks in one robot
+tasks:
+  # This is the name you will see in Robocorp Lab and Cloud.
+  # Tip: Naming these as 'verbs' or actions that the robot can do, makes these easier to use.
+  Execute Input Forms:
+    # Command contains the executed command and it arguments
+    # (The list format avoids problems with arguments that have spaces)
+    command:
+      - python
+      - -m
+      - robot
+      - --report
+      - NONE
+      - --outputdir
+      - output
+      - --logtitle
+      - Task log
+      - Tasks/
+
+# Defines the place for your conda config file
+condaConfigFile: conda.yaml
+
+# Files added to this folder are sent to Robocorp Cloud as run artifacts
+artifactsDir: output
+
+# This controls the packaging of your robot to avoid any development files from being sent with your robot.
+ignoreFiles:
+  - .gitignore
+
+# Paths defined here are prepended to the PATH environment variable
+# for the duration of the execution.
+PATH:
+  - bin
+
+# Paths defined here are prepended to the PYTHONPATH environment variable
+# for the duration of the execution.
+PYTHONPATH:
+  - variables
+  - libraries
+  - resources

@@ -6,3 +6,14 @@ dependencies:
   - pip=20.1
   - pip:
     - rpaframework==6.*
+command:
+  - python
+  - -m
+  - robot
+  - --report
+  - NONE
+  - -d
+  - output
+  - --logtitle
+  - Task log
+  - tasks.robot
