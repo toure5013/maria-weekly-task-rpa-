@@ -34,10 +34,11 @@ Login to Robotsparebin web page
 Dowload and open excel file of sales data
     Download  ${exel_file_url}   overwrite=true
     Open workbook  SalesData.xlsx
-    ${worksheet}=  Read Worksheet  SalesData.xlsx header=${TRUE}
-    ${table}=      Create table     ${worksheet}
-    [Teardown]       Close workbook
-    Log(${table})
+        ${table}=       Read Worksheet As Table     header=True
+    Close Workbook
+    FOR     ${row}  IN  @{table}
+        Log     ${row}
+    END
 
 
 
