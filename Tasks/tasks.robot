@@ -11,6 +11,9 @@ ${username}=  maria
 ${password}=  thoushallnotpass
 ${exel_file_url}=   https://robotsparebinindustries.com/SalesData.xlsx
 ${default_browser}=  chrome
+${sale_target}=  3000
+
+
 
 *** Keywords ***
 Open Robotsparebin intranet
@@ -34,16 +37,29 @@ Login to Robotsparebin web page
 Dowload and open excel file of sales data
     Download  ${exel_file_url}   overwrite=true
     Open workbook  SalesData.xlsx
-    ${worksheet}=  Read Worksheet  SalesData.xlsx header=${TRUE}
+    ${worksheet}=  Read Worksheet  SalesData.xlsx
     ${table}=      Create table     ${worksheet}
     [Teardown]       Close workbook
-    Log(${table})
-
+    [Return]  ${table}
 
 
 *** Keywords ***
+Select value in a select
+    [Arguments]  ${select_identifier}=${EMPTY}  ${element_to_select_identifier}=${EMPTY}
+    Click Element   ${select_identifier}
+    sleep  1 second
+    Mouse Down    ${element_to_select_identifier}=${EMPTY}
+    Click Element  ${element_to_select_identifier}=${EMPTY}
+    sleep  1 second
+
+*** Keywords ***
 Fill and submit the form of sale information
-    log("ok")
+    [Arguments]  ${table}=${EMPTY}
+    input text when element is visible  id:firstname  TOURE
+    input text when element is visible  id:lastname  SOULEYMANE
+    Select value in a select   id:salestarget   css:option[value="${sale_target}"]
+    input text when element is visible  id:salesresult  2000
+    Log  ${table}
 
 
 
@@ -63,7 +79,7 @@ Dowload excel file of sales report and fill the web page
     [tags]  accomplish maria task
     Open Robotsparebin intranet
     Login to Robotsparebin web page
-    Dowload and open excel file of sales data
-    Fill and submit the form of sale information
+    ${sales_table}=  Dowload and open excel file of sales data
+    Fill and submit the form of sale information  ${sales_table}
     Convert to pdf file
     Send report
