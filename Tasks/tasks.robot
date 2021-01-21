@@ -11,7 +11,7 @@ ${username}=  maria
 ${password}=  thoushallnotpass
 ${exel_file_url}=   https://robotsparebinindustries.com/SalesData.xlsx
 ${default_browser}=  chrome
-
+#implement all task in ython instead of .robot language
 
 
 *** Keywords ***
@@ -94,10 +94,6 @@ Logout to Robotsparebin web page and close browser
     click element when visible  id:logout
     Close Browser
 
-
-*** Tasks ***
-Create PDF from HTML template
-    Template HTML to PDF   ${TEMPLATE}  ${PDF}  ${VARS}
 
 
 *** Tasks ***
