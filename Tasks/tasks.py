@@ -39,7 +39,7 @@ def capture_sales_report_summary():
 
 
 def export_sales_table_to_pdf():
-    print('....')$
+    print('....')
 
 
 def main():
