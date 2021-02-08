@@ -97,5 +97,8 @@ def main():
     sales_report_data = open_excel_file_got_the_datas("./SalesData.xlsx")
     loop_sale_informations_and_send_to_fill_keywords(sales_report_data)
     export_sales_table_to_pdf()
+
+
+
 if __name__ == "__main__":
     main()
