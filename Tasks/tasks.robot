@@ -74,15 +74,16 @@ Loop sale informations and send to fill keywords
 
 *** Keywords ***
 Capture sales report summary
-    Screenshot  css:div.sales-summary   ${OUTPUTDIR}/report_summary.png #${CURDIR}${/}output${/}sales_summary.png
+    #${CURDIR}${/}output${/}sales_summary.png
+    Screenshot  css:div.sales-summary  ${CURDIR}${/}output${/}sales_summary.png
 
 
 *** Keywords ***
 Export sales table to pdf
     Wait Until Element Is Visible  id:sales-results
     ${sales_results_html}=    Get Element Attribute    id:sales-results    outerHTML
-    #Html To Pdf    ${sales_results_html}    ${CURDIR}${/}output${/}sales_results.pdf
-    Template HTML to PDF   ${TEMPLATE}  ${PDF}  ${VARS}
+    Html To Pdf    ${sales_results_html}    ${CURDIR}${/}output${/}sales_results.pdf
+    #Template HTML to PDF   ${TEMPLATE}  ${PDF}  ${VARS}
 *** Keywords ***
 Send report
     log  "send"
