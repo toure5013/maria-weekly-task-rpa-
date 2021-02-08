@@ -8,4 +8,4 @@ example : robot -d output tasks.robot
 
 You can also run this command
 
-- python -m robot --report NONE --outputdir output --logtitle Task log Tasks/
+- python -m robot --report NONE --outputdir output Tasks/tasks.robot

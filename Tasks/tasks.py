@@ -31,11 +31,14 @@ def download_sales_report_excel_file(excel_file_url):
 
 
 def open_excel_file_got_the_datas(excel_file_path):
-    excel_lib.open_workbook(excel_file_path)
-    table = excel_lib.read_worksheet_as_table(header=True)
-    excel_lib.close_workbook()
-    print(table)
+    try:
+        excel_lib.open_workbook(excel_file_path)
+        table = excel_lib.read_worksheet_as_table(header=True)
+    finally:
+        excel_lib.close_workbook()
+
     return table
+
 
 
 def fill_sale_information_for_one_person(saleData):
@@ -57,7 +60,7 @@ def loop_sale_informations_and_send_to_fill_keywords(table_salesData):
 
 
 def capture_sales_report_summary():
-    browser_lib.screenshot('css:div.sales-summary')
+    browser_lib.screenshot('css:div.sales-summary', './results/report.png')
 
 
 def export_sales_table_to_pdf():
@@ -72,7 +75,8 @@ def export_sales_table_to_pdf():
         "zip": "00100",
         "items": "<br/>".join(orders),
     }
-    #pdf_lib.template_html_to_pdf("order.template", "order.pdf", vars)
+    content = "<span style='color:red; font-size:1.5em'>content</span>"
+    pdf_lib.html_to_pdf(content, "./results/report.pdf")
     #pdf_lib.template_html_to_pdf("order.template", "order.pdf", content)
 
 
@@ -96,6 +100,7 @@ def main():
     download_sales_report_excel_file(URL_sales_report_excel_file)
     sales_report_data = open_excel_file_got_the_datas("./SalesData.xlsx")
     loop_sale_informations_and_send_to_fill_keywords(sales_report_data)
+    capture_sales_report_summary();
     export_sales_table_to_pdf()
 
 
