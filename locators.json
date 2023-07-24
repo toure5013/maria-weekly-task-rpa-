@@ -1,0 +1,23 @@
+{
+    "Btn": {
+        "screenshot": ".images/btn-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/",
+        "strategy": "css",
+        "type": "browser",
+        "value": ".btn"
+    },
+    "Password": {
+        "screenshot": ".images/password-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/",
+        "strategy": "id",
+        "type": "browser",
+        "value": "password"
+    },
+    "Username": {
+        "screenshot": ".images/username-screenshot.png",
+        "source": "https://robotsparebinindustries.com/#/",
+        "strategy": "id",
+        "type": "browser",
+        "value": "username"
+    }
+}
